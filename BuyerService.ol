@@ -29,13 +29,13 @@ service BuyerService {
 			if (price <10) {
 				println@Console( "price lower than 10")();
 				accept@Seller("Ok to buy chips for " + price);
-				[details(invoice)]{println@Console( "Received "+invoice+" from Shipper!")()}
+				[details(invoice)]{println@Console( "Received '"+invoice+"' from Shipper!")()}
 			} else {
 				println@Console( "price not lower than 10")();
 				reject@Seller("Not ok to buy chips for " + price)
 			}
 		 }
         
-     		}
+     	}
 	}
 }

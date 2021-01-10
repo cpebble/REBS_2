@@ -1,4 +1,4 @@
-:8000 -> SellerInterface
-:8001 Buyer -> Shipper Interface
-:8002 Seller -> Buyer
-:8003 -> ShipperInterface
+:8000 Seller -> Buyer
+:8001 Buyer <-> Shipper Interface
+:8002 -> ShipperInterface
+:9000++ Custom Seller interfaces

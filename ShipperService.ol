@@ -7,7 +7,7 @@ service ShipperService {
     execution { concurrent } // Seller should be able to handle multiple buyers
 
     inputPort Shipper {
-        Location: "socket://localhost:8003"
+        Location: "socket://localhost:8002"
         Protocol: http { format = "json"}
         Interfaces: ShipperInterface
     }

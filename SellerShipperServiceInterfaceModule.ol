@@ -6,6 +6,11 @@ interface SellerInterface {
     reject( string )
 }
 
+type OrderRequest: void {
+    .item: string
+    .location: string
+}
+
 interface ShipperInterface {
     OneWay:
         order( string )

@@ -4,27 +4,31 @@ from BuyerServiceInterfaceModule import BuyerShipperInterface, BuyerSellerInterf
 include "console.iol"
 
 
-service ExpensiveSellerService {
+service Seller1 {
     execution { concurrent } // Seller should be able to handle multiple buyers
 
     inputPort Seller { 
-        Location: "socket://localhost:8004"
+        Location: "auto:json:location:file:start.json"
         Protocol: http { format = "json"}
         Interfaces: SellerInterface
     }
     outputPort Shipper {
-        Location: "socket://localhost:8003"
+        Location: "socket://localhost:8002"
         Protocol: http { format = "json"}
         Interfaces: ShipperInterface
     }
     outputPort SellerBuyer {
-         location: "socket://localhost:8002"
+         location: "socket://localhost:8000"
          protocol: http { format = "json" }
          interfaces: BuyerSellerInterface
     }
 
     init {
-        sellprice = 17
+        if (#args != 1) {
+            println@Console("Use selling price as first parameter")()
+            throw( Error )
+        }
+        sellprice = int ( args[0] ) // Cast to int
         println@Console("Opened up shop selling chips for " + sellprice)()
     }
 
